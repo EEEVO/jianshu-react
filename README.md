@@ -11,7 +11,8 @@
 
 项目为模仿简书的基本功能，用来系统化的练习react与其周末插件的使用，加深react熟练度与组件化开发的理解
 
-技术栈:react、react-router、semantic-ui、sass
+>脚手架：create-react-app
+>技术栈:react、react-router、semantic-ui-react、sass
 
 # 使用
 
