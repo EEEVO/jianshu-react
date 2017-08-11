@@ -7,14 +7,14 @@ class Nav extends Component {
   }
   render() {
     return (
-      <div className={`${NavStyle.nav} ui secondary pointing menu`}>
+      <div className={`${NavStyle.nav} ui fixed secondary pointing menu`}>
         <div className="ui container">
-          <div className="header item" >Noads</div>
-          <div className="item active" >首页</div>
+          <a className="header item" >Noads</a>
+          <a className="item active" >首页</a>
           <div className="menu right">
-            <div className="item active">登录</div>
-            <div className="item">注册</div>
-            <div className="item">写文章</div>
+            <a className="item active">登录</a>
+            <a className="item">注册</a>
+            <a className="item">写文章</a>
           </div>
         </div>
       </div >

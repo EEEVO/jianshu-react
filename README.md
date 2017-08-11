@@ -20,7 +20,7 @@ npm i && yarn install
 
 >需要注意的是semantic-ui安装过程中会遇到提问请求如下
 
-![](http://oowj6kf2e.bkt.clouddn.com/semantic01.png)
+<!-- ![](http://oowj6kf2e.bkt.clouddn.com/semantic01.png)
 ![](http://oowj6kf2e.bkt.clouddn.com/semantic02.png)
 ![](http://oowj6kf2e.bkt.clouddn.com/semantic03.png)
 
@@ -28,7 +28,7 @@ npm i && yarn install
 
 安装完成之后得进入semantic下执行`gulp build`
 
-其他命令还是老样子
+其他命令还是老样子 -->
 
 npm start && yarn start
 
@@ -41,3 +41,10 @@ npm test && yarn test
 ## 170811
 
 * 完成项目构建
+
+* 完成菜单栏组件样式
+
+* 完成登录组件与注册组件样式
+
+ps: 1. 因为目前还没有用到路由，所以active选中样式功能预留。
+    2. 回家把登录模块与菜单栏状态绑定

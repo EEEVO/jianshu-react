@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import PanelStyle from './user.scss';
 
-import SignIn from './signIn/SignIn.jsx';
-import signUp from './signUp/signUp.jsx';
+import SignIn from './SignIn/SignIn.jsx';
+import SignUp from './SignUp/SignUp.jsx';
 
 class Panel extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Panel extends Component {
     if (this.state.currState === 1) {
       children = <SignIn />
     } else {
-      children = <signUp />
+      children = <SignUp />
       // children = <div>测试</div>
     }
     return (
@@ -54,10 +54,3 @@ class Panel extends Component {
 }
 
 export default Panel
-// <NavLink to="/sign_in"
-//                 activeClassName={S.active}
-//               >登录</NavLink>
-//               <b>·</b>
-//               <NavLink to="/sign_up"
-//                 activeClassName={S.active}
-//               >注册</NavLink>
