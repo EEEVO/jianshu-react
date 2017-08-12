@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Recommend from '../../compontent/home/Recommend'
 import PreviewList from '../../layout/preview/PreviewList'
-import Ajax from '../../common/ajax.js'
+// import Ajax from '../../common/ajax.js'
 import Axios from 'axios'
 class Home extends Component {
   constructor(props) {
@@ -10,21 +10,20 @@ class Home extends Component {
       PreviewList: [],
       Recommend: []
     }
+    this.getPreview = this.getPreview.bind(this);
   }
   componentDidMount() {
     console.log("发起Preview请求");
-    // let res = Ajax.getPreview
-    // console.log(Ajax.getPreview);
+    this.getPreview()
+  }
+  getPreview() {
     Axios.post('http://api.noods.me/getPreview')
       .then((res) => {
         console.log(res.data);
+        this.setState({
+          PreviewList: res.data
+        })
       })
-    // if (condition) {
-
-    // }
-    // this.setState({
-    //   PreviewList: res
-    // })
   }
   render() {
     return (

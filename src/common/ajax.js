@@ -4,10 +4,14 @@ import Axios from 'axios'
  * 
  * 
  */
-export default function getPreview() {
-  let foores
-  Axios.post('http://api.noods.me/getPreview')
-    .then((res) => {
-      return foores
-    })
+class Ajax {
+  getPreview() {
+    return (
+      Axios.post('http://api.noods.me/getPreview').then((res) => {
+        return res.data
+      })
+    )
+  }
 }
+
+export default new Ajax()
