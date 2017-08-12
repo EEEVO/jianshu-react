@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import PanelStyle from './user.scss';
 
-import SignIn from './SignIn/SignIn.jsx';
-import SignUp from './SignUp/SignUp.jsx';
+import SignIn from './signin/SignIn.jsx';
+import SignUp from './signup/SignUp.jsx';
 
 class Panel extends Component {
   constructor(props) {
