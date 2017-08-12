@@ -3,6 +3,7 @@
 - [前言](#前言)
 - [使用](#使用)
 - [开发记录](#开发记录)
+  - [170812](#170812)
   - [170811](#170811)
 
 <!-- /TOC -->
@@ -13,7 +14,7 @@
 
 >脚手架：create-react-app
 >
->技术栈:react、react-router、semantic-ui-react、sass
+>技术栈:react、react-router、semantic-ui-react、sass、webpack3、axios
 
 # 使用
 
@@ -39,6 +40,10 @@ npm test && yarn test
 
 # 开发记录
 
+## 170812
+
+* 将菜单换成react-router-dom
+
 ## 170811
 
 * 完成项目构建
@@ -49,3 +54,5 @@ npm test && yarn test
 
 ps: 1. 因为目前还没有用到路由，所以active选中样式功能预留。
     2. 回家把登录模块与菜单栏状态绑定
+
+    
