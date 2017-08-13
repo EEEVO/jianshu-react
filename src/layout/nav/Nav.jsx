@@ -4,9 +4,10 @@ import { Link, NavLink } from 'react-router-dom';
 import NavStyle from './Nav.scss'
 
 class Nav extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+
+  // }
   render() {
     return (
       <div className={`${NavStyle.nav} ui fixed secondary pointing menu`}>
