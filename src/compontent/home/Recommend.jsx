@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import S from './Recommend.scss'
+import RecommendStyle from './Recommend.scss'
 import Author from './Author'
 
 class Recommend extends Component {
@@ -17,8 +17,8 @@ class Recommend extends Component {
       data
      } = this.props
     return (
-      <div className={S.recommend}>
-        <div className={S.title}>
+      <div className={RecommendStyle.recommend}>
+        <div className={RecommendStyle.title}>
           <span>作者列表</span>
         </div>
         <div className="ui items">
@@ -34,4 +34,10 @@ class Recommend extends Component {
   }
 }
 
+// Recommend.propTypes = {
+//   data: PropTypes.array
+// }
+// Recommend.defaultProps = {
+//   data: []
+// }
 export default Recommend

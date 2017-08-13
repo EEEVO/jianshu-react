@@ -28,4 +28,11 @@ class Author extends Component {
   }
 }
 
+// Author.propTypes = {
+//   user: PropTypes.object
+// }
+// Author.defaultProps = {
+//   user: {}
+// }
+
 export default Author

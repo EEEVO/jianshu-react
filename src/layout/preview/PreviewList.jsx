@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import S from './style.scss';
+import PreviewListStyle from './style.scss';
 import Preview from './Preview'
 
 class PreviewList extends Component {
@@ -48,7 +48,7 @@ class PreviewList extends Component {
           }}
           key={index}
         >
-          <Link to="" className={S.tag}>{collection_name}</Link>
+          <Link to="" className={PreviewListStyle.tag}>{collection_name}</Link>
         </Preview>
       );
     })
