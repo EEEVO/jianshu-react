@@ -10,7 +10,7 @@
 
 # 前言
 
-项目为模仿简书的基本功能，用来系统化的练习react与其周末插件的使用，加深react熟练度与组件化开发的理解
+项目为模仿简书的基本功能，用来系统化的练习react与其周围插件的使用，加深react熟练度与组件化开发的理解
 
 >脚手架：create-react-app
 >
@@ -20,9 +20,10 @@
 
 npm i && yarn install
 
+<!-- 
 >需要注意的是semantic-ui安装过程中会遇到提问请求如下
 
-<!-- ![](http://oowj6kf2e.bkt.clouddn.com/semantic01.png)
+![](http://oowj6kf2e.bkt.clouddn.com/semantic01.png)
 ![](http://oowj6kf2e.bkt.clouddn.com/semantic02.png)
 ![](http://oowj6kf2e.bkt.clouddn.com/semantic03.png)
 
