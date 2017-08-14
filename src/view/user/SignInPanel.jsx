@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Panel from '../../compontent/user/Panel.js';
-import SignIn from '../../compontent/user/signin/SignIn';
+import SignIn from '../../compontent/user/signIn/SignIn.jsx';
 
 
 class SignInPanel extends Component {
