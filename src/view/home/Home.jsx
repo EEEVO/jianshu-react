@@ -3,6 +3,7 @@ import Recommend from '../../compontent/home/Recommend'
 import PreviewList from '../../layout/preview/PreviewList'
 // import Ajax from '../../common/ajax.js'
 import Axios from 'axios'
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -48,14 +49,10 @@ class Home extends Component {
     return (
       <div className="ui container grid">
         <div className="column twelve wide">
-          <PreviewList {
-            ...this.state.previewList
-          } />
+          <PreviewList {...this.state.previewList} />
         </div>
         <div className="column four wide">
-          <Recommend {
-            ...this.state.recommend
-          } />
+          <Recommend {...this.state.recommend} />
         </div>
       </div>
     )
