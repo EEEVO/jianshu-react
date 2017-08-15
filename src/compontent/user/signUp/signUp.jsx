@@ -90,6 +90,7 @@ class SignUp extends Component {
     })
   }
   render() {
+    let { SignUpAjax } = this.props
     let {
       username,
       password,
