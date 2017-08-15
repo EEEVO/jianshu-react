@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import S from './myPage.scss'
+import Axios from 'axios'
+import Qs from 'qs'
 
 class Aside extends Component {
   constructor(props) {
@@ -13,14 +15,28 @@ class Aside extends Component {
     this.cancelEdit = this.cancelEdit.bind(this)
     this.editMe = this.editMe.bind(this)
   }
-  editDone() {
-    console.log("editDone");
+  //提交按钮
+  editDone(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    let { editVal } = this.state;
+    let { userInfo: { user_id }, updateUserIntro } = this.props;
+
+    Axios.post(`http://api.noods.me/editIntro`, Qs.stringify({ user_intro: editVal, user_id }))
+      .then((res) => {
+        let { code } = res.data
+        if (code === 0) {
+          updateUserIntro(editVal);
+          this.setState({ inEdit: false });
+        }
+      });
   }
-  editContent() {
-    console.log("editCcontent");
+  editContent(e) {
+    this.setState({ editVal: e.target.value });
   }
+  // 取消编辑年龄
   cancelEdit() {
-    console.log("cancelEdit");
+    this.setState({ inEdit: false });
   }
   editMe(e) {
     e.stopPropagation();

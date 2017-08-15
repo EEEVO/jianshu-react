@@ -18,12 +18,10 @@ class MyPage extends Component {
     this.notebookClick = this.notebookClick.bind(this)
   }
   collectionClick(collection_id, collection_name) {
-    debugger
     this.props.changePreviews({ collection_id }, collection_name);
   }
   // 文集单机事件
   notebookClick(collection_id, collection_name) {
-    debugger
     this.collectionClick(collection_id, collection_name);
   }
   render() {

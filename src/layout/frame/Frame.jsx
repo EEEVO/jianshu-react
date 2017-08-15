@@ -59,7 +59,6 @@ class Frame extends Component {
   // 获取个人所有文章信息
   getPreview(data, previewsName) {
     Axios.post(`http://api.noods.me/getPreview`, Qs.stringify(data)).then((res) => {
-      debugger
       let { code, data } = res.data
       if (code === 0) {
         this.setState({
@@ -129,7 +128,6 @@ class Frame extends Component {
    * @memberof Frame
    */
   changePreviews(data, previewsName) {
-    debugger
     this.getPreview(data, previewsName);
   }
   updateUserIntro(intro) {
@@ -140,7 +138,6 @@ class Frame extends Component {
   // 获取“我的文集”
   initMyPage(user_id, previewsData, previewsName) {
     this.getPreview(previewsData, previewsName);
-    debugger
     Axios.post(`http://api.noods.me/getCollection`, Qs.stringify({
       user_id
     })).then((res) => {
