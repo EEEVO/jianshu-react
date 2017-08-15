@@ -19,7 +19,8 @@ class PreviewList extends Component {
   }
   render() {
     let {
-      data
+      data,
+      initMyPage
      } = this.props
     let dom = data.map((item, index) => {
       let {
@@ -44,7 +45,8 @@ class PreviewList extends Component {
             user_name,
             createdAt,
             avatar,
-            user_intro
+            user_intro,
+            initMyPage
           }}
           key={index}
         >

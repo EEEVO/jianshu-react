@@ -5,9 +5,10 @@ import SignIn from '../../compontent/user/signIn/SignIn';
 
 class SignInPanel extends Component {
   render() {
+    let { signInAjax } = this.props
     return (
       <Panel >
-        <SignIn />
+        <SignIn {...{ signInAjax }} />
       </Panel>
     );
   }
