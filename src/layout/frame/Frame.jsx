@@ -4,9 +4,7 @@ import Axios from 'axios'
 import Qs from 'qs'
 import FrameStyle from './Frame.scss';
 
-
 import Nav from '../nav/Nav'
-// import Panel from '../../compontent/user/Panel.js'
 import Write from '../../compontent/write/Write'
 import Home from '../../view/home/Home'
 import SignInPanel from '../../view/user/SignInPanel';
@@ -19,62 +17,31 @@ class Frame extends Component {
     super(props);
     this.state = {
       signUpMsg: null,
+      signInMsg: null,
       // 用户个人数据
       myInfo: null,
-      // 个人详情页所用
+      // Aside.js 我的文集
       notebooks: [],
       myPagePreviews: [],
       previewsName: '所有文章'
     }
+
+    this.signInAjax = this.signInAjax.bind(this)
     this.SignUpAjax = this.SignUpAjax.bind(this)
     this.initMyInfo = this.initMyInfo.bind(this)
     this.initMyPage = this.initMyPage.bind(this)
     this.getPreview = this.getPreview.bind(this)
+    this.logOut = this.logOut.bind(this)
+    this.changePreviews = this.changePreviews.bind(this)
+    this.updateUserIntro = this.updateUserIntro.bind(this)
   }
+
   /**
-   * 注销
-   * 
-   * @memberof Frame
+   * =======================================公共方法=====================================
    */
-  logOut() {
-    Axios.post(`http://api.noods.me/logout`).then(({ code }) => {
-      if (code === 0) {
-        this.initMyInfo(null);
-      }
-    });
-  }
-  // previewName 就是用户页头像下显示的那几个字
-  initMyPage(user_id, previewsData, previewsName) {
-    this.getPreview(previewsData, previewsName);
-    Axios.post(`http://api.noods.me/getCollection`, {
-      user_id
-    }).then(({ code, data }) => {
-      if (code === 0) {
-        this.setState({
-          notebooks: data
-        });
-      }
-    });
-  }
-  getPreview(data, previewsName) {
-    Axios.post(`http://api.noods.me/getPreview`, {
-      data
-    }).then(({ code, data }) => {
-      if (code === 0) {
-        this.setState({
-          myPagePreviews: data,
-          previewsName
-        });
-      }
-    });
-  }
-  /**
-   * 初始化个人信息
-   * 
-   * @param {any} myInfo 
-   * @memberof Frame
-   */
+  // 初始化个人信息
   initMyInfo(myInfo) {
+    console.log("initMyInfo");
     if (myInfo) {
       let { id, avatar, username, user_intro } = myInfo
       avatar = `http://api.noods.me${avatar}`
@@ -87,36 +54,26 @@ class Frame extends Component {
     }
     this.setState({ myInfo })
   }
+  // 获取个人所有文章信息
+  getPreview(data, previewsName) {
+    Axios.post(`http://api.noods.me/getPreview`, Qs.stringify({
+      data
+    })).then((res) => {
+      let { code, data } = res.data
+      if (code === 0) {
+        this.setState({
+          myPagePreviews: data,
+          previewsName
+        });
+      }
+    });
+  }
+
   /**
-   * 注册方法：使用与SignUp组件
-   * 
-   * @param {any} reqData 请求参数
-   * @memberof Frame
+   * ====================================== 菜单Nav组件用============================================
    */
+  //  注册方法：使用与SignUp组件
   SignUpAjax(reqData) {
-    // Axios({
-    //   method: 'post',
-    //   url: 'http://api.noods.me/register',
-    //   headers: {
-    //     "Content-Type": 'application/x-www-form-urlencoded; charset=UTF-8'
-    //   },
-    //   data: {
-    //     username: reqData.username,
-    //     passw: reqData.password,
-    //     cfPassw: reqData.twopassword
-    //   }
-    // }).then((res) => {
-    //   let { code, data, msg } = res.data
-    //   this.setState({ signUpMsg: res })
-    //   if (code === 0) {
-    //     setTimeout(() => {
-    //       this.initMyInfo(data)
-    //     })
-    //   }
-    // })
-    /**
-     * 下部分是以json格式提交，返回的数据有问题
-     */
     Axios.post('http://api.noods.me/register', Qs.stringify({
       username: reqData.username,
       passw: reqData.password,
@@ -131,9 +88,67 @@ class Frame extends Component {
       }
     })
   }
+  // 登录
+  signInAjax(reqData) {
+    console.log(reqData.username);
+    console.log(reqData.password);
+    Axios.post('http://api.noods.me/login', Qs.stringify({
+      username: reqData.username,
+      passw: reqData.password
+    })).then((res) => {
+      let { code, data, msg } = res.data
+      this.setState({ signInMsg: res })
+      if (code === 0) {
+        setTimeout(() => {
+          this.initMyInfo(data)
+        })
+      }
+    })
+  }
+  // 注销
+  logOut() {
+    console.log("logOut");
+    Axios.post(`http://api.noods.me/logout`).then((res) => {
+      let { code } = res.data
+      if (code === 0) {
+        console.log(this);
+        this.initMyInfo(null);
+      }
+    });
+  }
+
+  /**
+   * ===================================Aside.js用==========================================
+   */
+  // 改变个人详情页查看
+  changePreviews(data, previewsName) {
+    this.getPreview(data, previewsName);
+  }
+  updateUserIntro(intro) {
+    let { myInfo } = this.state;
+    myInfo.user_intro = intro;
+    this.setState({ myInfo });
+  }
+  // 获取“我的文集”
+  initMyPage(user_id, previewsData, previewsName) {
+    this.getPreview(previewsData, previewsName);
+    debugger
+    Axios.post(`http://api.noods.me/getCollection`, Qs.stringify({
+      user_id
+    })).then((res) => {
+      console.log(res);
+      let { code, data } = res.data
+      if (code === 0) {
+        this.setState({
+          notebooks: data
+        });
+      }
+    });
+  }
+
   render() {
-    let { SignUpAjax, initMyPage, logOut } = this
-    let { myInfo, previewsName } = this.state
+    let { SignUpAjax, initMyPage, logOut, signInAjax, changePreviews, updateUserIntro } = this
+    let { myInfo, previewsName, myPagePreviews, notebooks } = this.state
     let { history } = this.props;
     return (
       <div className={FrameStyle.layout}>
@@ -141,7 +156,7 @@ class Frame extends Component {
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/sign_in"
           render={
-            (props) => (myInfo ? <Redirect to="/" /> : <SignInPanel />)
+            (props) => (myInfo ? <Redirect to="/" /> : <SignInPanel {...{ signInAjax }} />)
           }
         ></Route>
         <Route exact path="/sign_up" render={
@@ -149,7 +164,15 @@ class Frame extends Component {
         }></Route>
         <Route exact path="/my_page" render={
           (props) => (this.props.location.state ?
-            <MyPage {...{ previewsName, initMyPage, myInfo }} {...this.props} /> : <Redirect to="/" />)
+            <MyPage {...{
+              myPagePreviews,
+              previewsName,
+              notebooks,
+              changePreviews,
+              initMyPage,
+              myInfo,
+              updateUserIntro
+            }} {...this.props} /> : <Redirect to="/" />)
         }
         ></Route>
         <Route exact path="/write" component={Write}></Route>

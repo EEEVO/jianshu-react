@@ -37,6 +37,7 @@ class Nav extends Component {
               e => {
                 e.stopPropagation();
                 e.preventDefault();
+                {/* 注销 */ }
                 logOut();
               }}
             >注销</p>
