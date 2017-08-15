@@ -11,7 +11,11 @@ class Author extends Component {
   }
   render() {
     let { user_name, avatar } = this.props.user;
+<<<<<<< HEAD
     avatar = "http://api.noods.me" + avatar;
+=======
+    avatar = `http://api.noods.me${avatar}`
+>>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076
     return (
       <div className="item">
         <Link to="/" className="ui mini avatar image">
