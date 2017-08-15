@@ -25,7 +25,7 @@ class MyPage extends Component {
     this.collectionClick(collection_id, collection_name);
   }
   render() {
-    let { previewsName, initMyPage, location, myInfo, myPagePreviews, notebooks, updateUserIntro } = this.props
+    let { previewsName, initMyPage, location, myInfo, myPagePreviews, notebooks, updateUserIntro,history } = this.props
     let { userInfo } = location.state
     let { collectionClick, notebookClick } = this;
     let isMe = false;
@@ -40,7 +40,8 @@ class MyPage extends Component {
           <AuthorInfo
             {...{
               userInfo,
-              initMyPage
+              initMyPage,
+              history
             }}
           />
           <div className="ui secondary pointing menu">
@@ -52,7 +53,8 @@ class MyPage extends Component {
             {...{
               data: myPagePreviews,
               collectionClick,
-              initMyPage
+              initMyPage,
+              history
             }}
           />
         </div>
@@ -64,7 +66,8 @@ class MyPage extends Component {
               userInfo,
               notebookClick,
               isMe,
-              updateUserIntro
+              updateUserIntro,
+              history
             }}
           />
         </div>

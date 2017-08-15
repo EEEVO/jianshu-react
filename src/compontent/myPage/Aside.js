@@ -46,7 +46,7 @@ class Aside extends Component {
   }
   render() {
     let { inEdit, editVal } = this.state
-    let { notebooks, userInfo, notebookClick, isMe } = this.props;
+    let { notebooks, userInfo, notebookClick, isMe, history } = this.props;
     let { editMe, editContent, cancelEdit, editDone } = this;
     // 遍历我的文集遍历，拼接dom
     let notebooksDOM = notebooks.map((item, index) => {

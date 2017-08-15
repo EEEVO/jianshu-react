@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import SigninStyle from '../user.scss';
 
 class SignIn extends Component {
-<<<<<<< HEAD
-  render() {
-    return (
-      <div className={SigninStyle.sign_panel}>
-        <form className="ui form" action="">
-          <div className={`field`}>
-            <input type="text" placeholder="用户名" />
-          </div>
-          <div className={`field`}>
-            <input type="text" placeholder="密码" />
-=======
   constructor(props) {
     super(props)
     this.state = {
@@ -35,7 +24,7 @@ class SignIn extends Component {
     e.stopPropagation();
     let { usernameErrMsg, passwordErrMsg, username, password } = this.state
     // 传入容器组件
-    if (usernameErrMsg == '' && passwordErrMsg == '') {
+    if (usernameErrMsg === '' && passwordErrMsg === '') {
       this.props.signInAjax({
         username,
         password
@@ -109,7 +98,8 @@ class SignIn extends Component {
     let { onSubmit, nameChange, pwChange } = this
     let nameMsgDOM = usernameErrMsg === "" ? null : <p className={SigninStyle.err}>{usernameErrMsg}</p>
     let pwMsgDOM = passwordErrMsg === "" ? null : <p className={SigninStyle.err}>{passwordErrMsg}</p>
-    let resInfo = null
+    // 返回的错误信息
+    // let resInfo = null
     return (
       <div className={SigninStyle.sign_panel}>
         {/* {resInfo} */}
@@ -121,7 +111,6 @@ class SignIn extends Component {
           <div className={`field ${passwordErrMsg === '' ? '' : 'error'}`}>
             <input type="text" placeholder="密码" value={password} onChange={pwChange} ref="passwordDOM" />
             {pwMsgDOM}
->>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076
           </div>
           <div className={`field`}>
             <button type="submit" className="ui button fluid primary">登录</button>

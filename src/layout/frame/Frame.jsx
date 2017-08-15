@@ -1,65 +1,20 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Route } from 'react-router-dom';
-import Axios from 'axios'
-
-import FrameStyle from './Frame.scss';
-
-
-import Nav from '../nav/Nav'
-// import Panel from '../../compontent/user/Panel.js'
-=======
 import { Route, Redirect } from 'react-router-dom';
 import Axios from 'axios'
 import Qs from 'qs'
 import FrameStyle from './Frame.scss';
 
 import Nav from '../nav/Nav'
->>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076
 import Write from '../../compontent/write/Write'
 import Home from '../../view/home/Home'
 import SignInPanel from '../../view/user/SignInPanel';
 import SignUpPanel from '../../view/user/SignUpPanel';
-<<<<<<< HEAD
-=======
 import MyPage from '../../view/user/MyPage';
->>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076
 
 
 class Frame extends Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.SignUpAjax = this.SignUpAjax.bind(this)
-  }
-  /**
-   * 注册方法：使用与SignUp组件
-   * 
-   * @param {any} reqData 请求参数
-   * @memberof Frame
-   */
-  SignUpAjax(reqData) {
-    Axios.post('http://api.noods.me/register', {
-      reqData
-    }).then((res) => {
-      if (res.data.msg === "注册成功") {
-
-      }
-    })
-  }
-  render() {
-    let { SignUpAjax } = this
-    return (
-      <div className={FrameStyle.layout}>
-        <Nav></Nav>
-        <Route exact path="/" component={Home}></Route>
-        <Route exact path="/sign_in" component={SignInPanel}></Route>
-        <Route exact path="/sign_up" render={
-          (props) => (
-            <SignUpPanel {...{ SignUpAjax }} />
-          )
-        }></Route>
-=======
     this.state = {
       signUpMsg: null,
       signInMsg: null,
@@ -202,7 +157,11 @@ class Frame extends Component {
     return (
       <div className={FrameStyle.layout}>
         <Nav {...{ myInfo, logOut, initMyPage, history }}></Nav>
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/"
+          render={
+            (props) => (<Home {...{ initMyPage }} {...props} />)
+          }
+        ></Route>
         <Route exact path="/sign_in"
           render={
             (props) => (myInfo ? <Redirect to="/" /> : <SignInPanel {...{ signInAjax }} />)
@@ -224,7 +183,6 @@ class Frame extends Component {
             }} {...this.props} /> : <Redirect to="/" />)
         }
         ></Route>
->>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076
         <Route exact path="/write" component={Write}></Route>
       </div >
     );

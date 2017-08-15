@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import myPage from './myPage.scss';
 
 class AuthorInfo extends Component {
@@ -8,7 +7,6 @@ class AuthorInfo extends Component {
 
   }
   render() {
-    // let { avatar, user_name, user_id } = userInfo;
     let { history, initMyPage, userInfo } = this.props
     let { user_id, user_name, avatar } = userInfo
     return (

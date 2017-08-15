@@ -37,10 +37,6 @@ class Panel extends Component {
   }
 }
 
-<<<<<<< HEAD
-export default Panel
-=======
 export default Panel
 
 
->>>>>>> e281ddf2bed37f7a22bababfd8f36d57697b0076

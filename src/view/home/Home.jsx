@@ -13,11 +13,17 @@ class Home extends Component {
     }
     this.getPreview = this.getPreview.bind(this);
     this.getAuthor = this.getAuthor.bind(this);
+    this.collectionClick = this.collectionClick.bind(this)
   }
   componentDidMount() {
     console.log("发起Preview请求");
     this.getPreview()
     this.getAuthor()
+  }
+  collectionClick(collection_id, collection_name, userInfo) {
+    let { history, initMyPage } = this.props;
+    history.push('/my_page', { userInfo });
+    initMyPage(userInfo.user_id, { collection_id }, collection_name);
   }
   /**
    * 请求文章数据
@@ -28,7 +34,7 @@ class Home extends Component {
     Axios.post('http://api.noods.me/getPreview')
       .then((res) => {
         this.setState({
-          previewList: res.data
+          previewList: res.data.data
         })
       })
   }
@@ -46,10 +52,18 @@ class Home extends Component {
       })
   }
   render() {
+    let { initMyPage, history } = this.props;
+    let { previewList } = this.state;
+    let { collectionClick } = this;
     return (
       <div className="ui container grid">
         <div className="column twelve wide">
-          <PreviewList {...this.state.previewList} />
+          <PreviewList {...{
+            data: previewList,
+            history,
+            initMyPage,
+            // collectionClick
+          }} />
         </div>
         <div className="column four wide">
           <Recommend {...this.state.recommend} />
