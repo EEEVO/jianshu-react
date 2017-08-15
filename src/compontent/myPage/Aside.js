@@ -34,9 +34,9 @@ class Aside extends Component {
     let { editMe, editContent, cancelEdit, editDone } = this;
     // 遍历我的文集遍历，拼接dom
     let notebooksDOM = notebooks.map((item, index) => {
-      let { id, collection_name } = item
+      let { id: collection_id, collection_name } = item
       return (
-        <div className="item" key={index} onClick={e => { notebookClick(id, collection_name); }}>
+        <div className="item" key={index} onClick={e => { notebookClick(collection_id, collection_name); }}>
           <i className="book icon"></i>
           <div className="content">
             {collection_name}

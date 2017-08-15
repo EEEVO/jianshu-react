@@ -22,7 +22,9 @@ class Frame extends Component {
       myInfo: null,
       // Aside.js 我的文集
       notebooks: [],
+      // 个人详情页的文集[文章]
       myPagePreviews: [],
+      // 个人详情页的文集名称
       previewsName: '所有文章'
     }
 
@@ -56,9 +58,8 @@ class Frame extends Component {
   }
   // 获取个人所有文章信息
   getPreview(data, previewsName) {
-    Axios.post(`http://api.noods.me/getPreview`, Qs.stringify({
-      data
-    })).then((res) => {
+    Axios.post(`http://api.noods.me/getPreview`, Qs.stringify(data)).then((res) => {
+      debugger
       let { code, data } = res.data
       if (code === 0) {
         this.setState({
@@ -120,8 +121,15 @@ class Frame extends Component {
   /**
    * ===================================Aside.js用==========================================
    */
-  // 改变个人详情页查看
+  /**
+   * 改变个人详情页查看
+   * 
+   * @param {any} data 文集ID
+   * @param {any} previewsName 文集名称
+   * @memberof Frame
+   */
   changePreviews(data, previewsName) {
+    debugger
     this.getPreview(data, previewsName);
   }
   updateUserIntro(intro) {
@@ -145,7 +153,6 @@ class Frame extends Component {
       }
     });
   }
-
   render() {
     let { SignUpAjax, initMyPage, logOut, signInAjax, changePreviews, updateUserIntro } = this
     let { myInfo, previewsName, myPagePreviews, notebooks } = this.state
