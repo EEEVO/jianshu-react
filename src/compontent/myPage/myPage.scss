@@ -45,3 +45,11 @@
         }
     }
 }
+
+
+.content_text{
+    cursor: pointer;
+    &:hover{
+        color:#562727
+    }
+}

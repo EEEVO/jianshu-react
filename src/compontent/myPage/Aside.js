@@ -52,9 +52,9 @@ class Aside extends Component {
     let notebooksDOM = notebooks.map((item, index) => {
       let { id: collection_id, collection_name } = item
       return (
-        <div className="item" key={index} onClick={e => { notebookClick(collection_id, collection_name); }}>
+        <div className={`item ${S.content_text}`} key={index} onClick={e => { notebookClick(collection_id, collection_name); }}>
           <i className="book icon"></i>
-          <div className="content">
+          <div className="content" >
             {collection_name}
           </div>
         </div>
