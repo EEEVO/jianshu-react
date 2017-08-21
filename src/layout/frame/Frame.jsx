@@ -10,6 +10,7 @@ import Home from '../../view/home/Home'
 import SignInPanel from '../../view/user/SignInPanel';
 import SignUpPanel from '../../view/user/SignUpPanel';
 import MyPage from '../../view/user/MyPage';
+import LoginHint from '../../view/user/LoginHint';
 
 
 class Frame extends Component {
@@ -183,11 +184,15 @@ class Frame extends Component {
             }} {...this.props} /> : <Redirect to="/" />)
         }
         ></Route>
-        <Route exact path="/write" component={Write}></Route>
+        <Route exact path="/write" render={
+          (props) => (
+            myInfo ? (<Write {...{ myInfo }} />) : (<Redirect to="/login_hint" />)
+          )
+        }></Route>
+        <Route path="/login_hint" component={LoginHint} {...{ history }} />
       </div >
     );
   }
 }
 
-//   <Write></Write>
 export default Frame;

@@ -62,7 +62,7 @@ class Home extends Component {
             data: previewList,
             history,
             initMyPage,
-            // collectionClick
+            collectionClick
           }} />
         </div>
         <div className="column four wide">

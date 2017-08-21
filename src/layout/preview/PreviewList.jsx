@@ -21,15 +21,17 @@ class PreviewList extends Component {
     let {
       data,
       initMyPage,
-      history
-     } = this.props
+      history,
+      collectionClick //单机文集事件
+    } = this.props
+
     let dom = data.map((item, index) => {
       let {
         id: article_id, article_title, createdAt,
         preview: previewContent,
         collection_name,
         user_id,
-        // collection_id,
+        collection_id,
         user
         } = item;
 
@@ -52,7 +54,25 @@ class PreviewList extends Component {
           }}
           key={index}
         >
-          <Link to="" className={PreviewListStyle.tag}>{collection_name}</Link>
+          {collection_id ? (
+            <Link to="" className={PreviewListStyle.tag}
+              onClick={
+                e => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  collectionClick && collectionClick(
+                    collection_id,
+                    collection_name,
+                    {
+                      user_id,
+                      user_name,
+                      avatar,
+                      user_intro
+                    }
+                  );
+                }
+              }>{collection_name}</Link>) : null}
+
         </Preview>
       );
     })
